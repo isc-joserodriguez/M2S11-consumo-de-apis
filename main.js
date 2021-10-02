@@ -4,11 +4,13 @@
 
 let respuesta = 'Aún sin datos';
 
-const peticion = async (url) => {
+const peticion = async (moneda1, moneda2) => {
+
+    let url = `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${moneda1}/${moneda2}.json`
+
     const response = await fetch(url);
     const data = await response.json();
-    console.log(`Un euro vale ${data.mxn} pesos mexicanos.`);
+    console.log(`Un ${moneda1} vale ${data[moneda2]} ${moneda2}.`);
 }
 
-peticion("https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/eur/mxn.json")
-peticion("https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/jpy/mxn.json")
+peticion("mxn", "jpy")
