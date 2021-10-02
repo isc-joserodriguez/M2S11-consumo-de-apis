@@ -23,7 +23,7 @@ const peticionPost = async () => {
             'Content-Type': 'application/json'
         },
         //El método GET, no lleva body
-        body: JSON.stringify({ 
+        body: JSON.stringify({
             "userId": 1,
             "title": "sunt aut facere repellat provident",
             "body": "quia et suscipit"
@@ -34,13 +34,13 @@ const peticionPost = async () => {
 }
 
 const peticionPut = async (id) => {
-    const response = await fetch("https://jsonplaceholder.typicode.com/posts/"+id, {
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts/" + id, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
         },
         //El método GET, no lleva body
-        body: JSON.stringify({ 
+        body: JSON.stringify({
             "userId": 1,
             "title": "sunt aut facere repellat provident",
             "body": "quia et suscipit"
@@ -59,3 +59,27 @@ GET => ruta/ => obtenerDatos();
 POST => ruta/ => crearDatos();
 DELETE => ruta/:id => borrarDatos(); 
 */
+
+//query string
+
+// http://www.mipagina.com/post?clave1=valor1&clave2=valor2&clave3=valor3
+
+// http://www.mipagina.com/posts/3
+
+const peticionPut = async () => {
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts/", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'token'
+        },
+        //El método GET, no lleva body
+        body: JSON.stringify({
+            "userId": 1,
+            "title": "sunt aut facere repellat provident",
+            "body": "quia et suscipit"
+        })
+    });
+    const data = await response.json()
+    console.log(data);
+}
