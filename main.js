@@ -14,3 +14,48 @@ const peticion = async (moneda1, moneda2) => {
 }
 
 peticion("mxn", "jpy")
+
+
+const peticionPost = async () => {
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts/", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        //El método GET, no lleva body
+        body: JSON.stringify({ 
+            "userId": 1,
+            "title": "sunt aut facere repellat provident",
+            "body": "quia et suscipit"
+        })
+    });
+    const data = await response.json()
+    console.log(data);
+}
+
+const peticionPut = async (id) => {
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts/"+id, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        //El método GET, no lleva body
+        body: JSON.stringify({ 
+            "userId": 1,
+            "title": "sunt aut facere repellat provident",
+            "body": "quia et suscipit"
+        })
+    });
+    const data = await response.json()
+    console.log(data);
+}
+
+peticionPost()
+peticionPut(3);
+
+
+/*
+GET => ruta/ => obtenerDatos();
+POST => ruta/ => crearDatos();
+DELETE => ruta/:id => borrarDatos(); 
+*/
